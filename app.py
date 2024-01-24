@@ -2,7 +2,7 @@ from dash import Dash, html, dcc, callback, Output, Input
 import plotly.express as px
 import pandas as pd
 
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv')
+df = pd.read_csv('data.csv')
 
 app = Dash(__name__)
 
@@ -21,6 +21,4 @@ def update_graph(value):
     dff = df[df.country == value]
     return px.line(dff, x='year', y='pop')
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
+server = app.server
